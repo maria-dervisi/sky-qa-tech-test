@@ -10,12 +10,14 @@ set_include_path(get_include_path() . PATH_SEPARATOR . "../../lib");
 require_once("iCalculator.php");
 require_once("iScientificCalculator.php");
 require_once("Calculator.php");
+require_once("ScientificCalculator.php");
 
 class FeatureContext extends BehatContext {
     protected $calculator;
 
     public function __construct() {
         $this->calculator = new Calculator();
+		//$this->calculator = new ScientificCalculator();
     }
 
     /**
@@ -45,6 +47,20 @@ class FeatureContext extends BehatContext {
     public function iHitEquals() {
         $this->calculator->pressEquals();
     }
+	
+	 /**
+     * @When /^I hit "add"$/
+     */
+    public function iHitAdd() {
+        $this->calculator->pressAdd();
+    }
+	
+	 /**
+     * @When /^I hit "subtract"$/
+     */
+    public function iHitSubtract() {
+        $this->calculator->pressSubtract();
+    }
 
     /**
      * @Then /^I see a result of "(\d+)"$/
@@ -55,4 +71,13 @@ class FeatureContext extends BehatContext {
             throw new Exception("Wrong result, actual is [$result]");
         }
     }
+	
+	 /**
+     * @When /^I hit "factorial"$/
+     
+    public function iHitFactorial() {
+        $this->calculator->factorial();
+    }
+	*/
+	
 }

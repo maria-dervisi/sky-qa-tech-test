@@ -27,3 +27,4 @@ Scenario: Multiply two numbers and add another
     And I enter "2" into the calculator
     And I hit "equals"
     Then I see a result of "52"
+
